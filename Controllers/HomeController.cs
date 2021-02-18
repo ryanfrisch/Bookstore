@@ -21,6 +21,7 @@ namespace Bookstore.Controllers
             _repository = repository;
         }
 
+        //Passes the database information into the view
         public IActionResult Index()
         {
             return View(_repository.Books);

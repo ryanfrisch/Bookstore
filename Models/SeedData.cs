@@ -6,6 +6,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
+// Where the Seed data is entered into the code 
+// Also contains the logic that determines if it needs to be used or not
+
 namespace Bookstore.Models
 {
     public class SeedData

@@ -6,8 +6,12 @@ using System.Threading.Tasks;
 
 namespace Bookstore.Models
 {
+    // Creates the Book model that we then use in the Database
+    // Defines each property to be Required
     public class Book
     {
+
+        // makes BookId the primary key
         [Key]
         public int BookId { get; set; }
 
@@ -20,6 +24,7 @@ namespace Bookstore.Models
         [Required(ErrorMessage = "Please enter a Publisher")]
         public string Publisher { get; set; }
 
+        // Validates the ISBN to make sure it fits the format ###-##########
         [Required(ErrorMessage = "Please enter an ISBN")]
         [RegularExpression(@"^\d{3}[-]\d{10}$", ErrorMessage = "That ISBN isn't valid")]
         public string ISBN { get; set; }
