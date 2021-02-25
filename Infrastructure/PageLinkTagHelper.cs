@@ -47,7 +47,7 @@ namespace Bookstore.Infrastructure
                 // build the a tag, create new one with the href and number built in
                 TagBuilder tag = new TagBuilder("a");
                 tag.Attributes["href"] = urlHelper.Action(PageAction, new { page = i });
-
+                // style each of the buttons
                 if (PageClassesEnabled)
                 {
                     tag.AddCssClass(PageClass);
