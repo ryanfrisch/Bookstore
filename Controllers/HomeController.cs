@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Bookstore.Models;
+using Bookstore.Models.ViewModels;
 
 namespace Bookstore.Controllers
 {
@@ -15,16 +16,34 @@ namespace Bookstore.Controllers
 
         private IBookRepository _repository;
 
+
+        // define the number of items per page, make it public so it's accessible
+        public int PageSize = 5;
+
         public HomeController(ILogger<HomeController> logger, IBookRepository repository)
         {
             _logger = logger;
             _repository = repository;
         }
 
-        //Passes the database information into the view
-        public IActionResult Index()
+        //Passes the database information into the view, make page 1 if no value is passed
+        public IActionResult Index(int page = 1)
         {
-            return View(_repository.Books);
+            // pass through our pre-packaged data in our new BookListViewModel
+            return View(new BookListViewModel
+                {
+                    Books = _repository.Books
+                        .OrderBy(b => b.BookId)
+                        .Skip((page - 1) * PageSize)
+                        .Take(PageSize),
+                    // create new paging info object that we set up with our class and set all of its properties
+                        PagingInfo = new PagingInfo
+                        {
+                            CurrentPage = page,
+                            ItemsPerPage = PageSize,
+                            TotalNumItems = _repository.Books.Count()
+                        }
+                });
         }
 
         public IActionResult Privacy()

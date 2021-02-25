@@ -34,6 +34,7 @@ namespace Bookstore.Models
                         Classification = "Fiction",
                         Category = "Classic",
                         Price = 9.95,
+                        Pages = 1488,
                     },
 
                     new Book
@@ -45,6 +46,7 @@ namespace Bookstore.Models
                         Classification = "Non-Fiction",
                         Category = "Biography",
                         Price = 14.58,
+                        Pages = 944,
                     },
 
                     new Book
@@ -56,6 +58,7 @@ namespace Bookstore.Models
                         Classification = "Non-Fiction",
                         Category = "Biography",
                         Price = 21.54,
+                        Pages = 832,
                     },
 
                     new Book
@@ -67,6 +70,7 @@ namespace Bookstore.Models
                         Classification = "Non-Fiction",
                         Category = "Biography",
                         Price = 11.61,
+                        Pages = 864,
                     },
 
                     new Book
@@ -78,6 +82,7 @@ namespace Bookstore.Models
                         Classification = "Non-Fiction",
                         Category = "Historical",
                         Price = 13.33,
+                        Pages = 528,
                     },
 
                     new Book
@@ -89,6 +94,7 @@ namespace Bookstore.Models
                         Classification = "Fiction",
                         Category = "Historical Fiction",
                         Price = 15.95,
+                        Pages = 288,
                     },
 
                     new Book
@@ -100,6 +106,7 @@ namespace Bookstore.Models
                         Classification = "Non-Fiction",
                         Category = "Self-Help",
                         Price = 14.99,
+                        Pages = 304,
                     },
                     new Book
                     {
@@ -110,6 +117,7 @@ namespace Bookstore.Models
                         Classification = "Non-Fiction",
                         Category = "Self-Help",
                         Price = 21.66,
+                        Pages = 240,
                     },
                     new Book
                     {
@@ -120,6 +128,7 @@ namespace Bookstore.Models
                         Classification = "Non-Fiction",
                         Category = "Business",
                         Price = 29.16,
+                        Pages = 400,
                     },
                     new Book
                     {
@@ -130,6 +139,40 @@ namespace Bookstore.Models
                         Classification = "Fiction",
                         Category = "Thrillers",
                         Price = 15.03,
+                        Pages = 642,
+                    },
+                    new Book
+                    {
+                        Title = "My Side of the Mountain",
+                        Author = "Jean Craighead George",
+                        Publisher = "E. P. Dutton",
+                        ISBN = "978-0141312422",
+                        Classification = "Fiction",
+                        Category = "Adventure",
+                        Price = 7.99,
+                        Pages = 177,
+                    },
+                    new Book
+                    {
+                        Title = "Percy Jackson & the Olympians: The Lightning Thief",
+                        Author = "Rick Riordan",
+                        Publisher = "Hyperion Books",
+                        ISBN = "978-0786838653",
+                        Classification = "Fiction",
+                        Category = "Fantasy",
+                        Price = 5.98,
+                        Pages = 377,
+                    },
+                    new Book
+                    {
+                        Title = "To Kill a Mockingbird",
+                        Author = "Harper Lee",
+                        Publisher = "J. B. Lippincott & Co.",
+                        ISBN = "978-0060935467",
+                        Classification = "Fiction",
+                        Category = "Southern Gothic",
+                        Price = 6.49,
+                        Pages = 281,
                     }
                 );
 

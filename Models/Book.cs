@@ -38,5 +38,8 @@ namespace Bookstore.Models
         [Required(ErrorMessage = "Please enter a Price")]
         public double Price { get; set; }
 
+        [Required(ErrorMessage = "Please enter the number of Pages")]
+        public int Pages { get; set; }
+        
     }
 }
