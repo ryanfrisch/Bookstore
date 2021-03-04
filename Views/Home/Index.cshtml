@@ -8,29 +8,7 @@
 @*Cycle through books and create a card for each*@
 @foreach (var b in Model.Books)
 {
-    <br />
-    <div class="card">
-        <div class="card-header">
-            <h4>
-                @b.Title
-                <span class="font-weight-bold" style="float:right">
-                    @b.Price.ToString("c")
-                </span>
-            </h4>
-            <div>
-                <div class="badge badge-secondary">@b.Classification</div>
-                <div class="badge badge-dark">@b.Category</div>
-                <span class="font-weight-light" style="float:right">
-                    @b.Pages Pages
-                </span>
-            </div>
-        </div>
-        <div class="card-body">
-            <div class="card-subtitle mb-2">Author: @b.Author</div>
-            <div class="card-text">Publisher: @b.Publisher</div>
-            <div class="card-text text-muted small">@b.ISBN</div>
-        </div>
-    </div>
+   <partial name="BookSummary" model="b" />
 }
 
 @*Pagination buttons that are dynamically created*@
@@ -38,6 +16,8 @@
     <div class="mt-3 btn-group">
         <div page-model="@Model.PagingInfo" page-action="Index" page-classes-enabled="true" page-class="btn"
              page-class-normal="btn-outline-secondary"
-             page-class-selected="btn-dark" class="m-1"></div>
+             page-class-selected="btn-dark" page-url-category="@Model.CurrentCategory"
+             class="m-1">
+        </div>
     </div>
 </div>

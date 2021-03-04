@@ -13,5 +13,6 @@ namespace Bookstore.Models.ViewModels
         
         // contains the page info
         public PagingInfo PagingInfo { get; set; }
+        public string CurrentCategory { get; set; }
     }
 }

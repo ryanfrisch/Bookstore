@@ -29,6 +29,9 @@ namespace Bookstore.Infrastructure
         public PagingInfo PageModel { get; set; }
         public string PageAction { get; set; }
 
+        // create dictionary to keep track of page urls
+        [HtmlAttributeName(DictionaryAttributePrefix = "page-url-")]
+        public Dictionary<string, object> PageUrlValues { get; set; } = new Dictionary<string, object>();
         public bool PageClassesEnabled { get; set; } = false;
         public string PageClass { get; set; }
         public string PageClassNormal { get; set; }
@@ -46,7 +49,12 @@ namespace Bookstore.Infrastructure
             {
                 // build the a tag, create new one with the href and number built in
                 TagBuilder tag = new TagBuilder("a");
-                tag.Attributes["href"] = urlHelper.Action(PageAction, new { page = i });
+
+                // store the page url values
+                PageUrlValues["page"] = i;
+                tag.Attributes["href"] = urlHelper.Action(PageAction, 
+                    PageUrlValues);
+
                 // style each of the buttons
                 if (PageClassesEnabled)
                 {

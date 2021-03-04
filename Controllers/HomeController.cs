@@ -26,23 +26,29 @@ namespace Bookstore.Controllers
             _repository = repository;
         }
 
-        //Passes the database information into the view, make page 1 if no value is passed
-        public IActionResult Index(int page = 1)
+        //Passes the database information and category into the view, make page 1 if no value is passed
+        public IActionResult Index(string category, int page = 1)
         {
             // pass through our pre-packaged data in our new BookListViewModel
             return View(new BookListViewModel
                 {
                     Books = _repository.Books
+                        .Where(b => category == null || b.Category == category)
                         .OrderBy(b => b.BookId)
                         .Skip((page - 1) * PageSize)
                         .Take(PageSize),
+
                     // create new paging info object that we set up with our class and set all of its properties
-                        PagingInfo = new PagingInfo
-                        {
-                            CurrentPage = page,
-                            ItemsPerPage = PageSize,
-                            TotalNumItems = _repository.Books.Count()
-                        }
+                    PagingInfo = new PagingInfo
+                    {
+                        CurrentPage = page,
+                        ItemsPerPage = PageSize,
+                        // determine TotalNumItems based on the category
+                        TotalNumItems = category == null ? _repository.Books.Count() :
+                            _repository.Books.Where (x => x.Category == category).Count()
+                    },
+                    // specifies the category in the BooklistViewModel
+                    CurrentCategory = category
                 });
         }
 

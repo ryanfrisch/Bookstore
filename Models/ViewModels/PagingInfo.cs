@@ -12,6 +12,7 @@ namespace Bookstore.Models.ViewModels
         public int ItemsPerPage { get; set; }
         public int CurrentPage { get; set; }
 
+        // this is where our total number of pages is determined, that's why in the controller we changed how TotalNumItems is calculated
         public int TotalPages => (int)(Math.Ceiling((decimal) TotalNumItems / ItemsPerPage));
     }
 }
