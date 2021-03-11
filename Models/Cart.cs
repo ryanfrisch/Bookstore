@@ -9,7 +9,7 @@ namespace Bookstore.Models
     {
         public List<CartLine> Lines { get; set; } = new List<CartLine>();
 
-        public void AddItem (Book bk, int qty)
+        public virtual void AddItem (Book bk, int qty)
         {
             CartLine line = Lines
                 .Where(b => b.Book.BookId == bk.BookId)
@@ -30,11 +30,11 @@ namespace Bookstore.Models
         }
 
         // remove a specific line that matches the book that's passed into the function
-        public void RemoveLine(Book bk) =>
+        public virtual void RemoveLine(Book bk) =>
             Lines.RemoveAll(x => x.Book.BookId == bk.BookId);
 
         // allow us to clear all lines from the cart
-        public void Clear() => Lines.Clear();
+        public virtual void Clear() => Lines.Clear();
 
         // compute cart total (explicitly convert my float to a decimal
         public decimal ComputeTotalSum() => Convert.ToDecimal(Lines.Sum(e => e.Book.Price * e.Quantity));
