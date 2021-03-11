@@ -1,9 +1,4 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
-@model Book
+﻿@model Book
 
 <br />
 <div class="card">
@@ -22,9 +17,22 @@
             </span>
         </div>
     </div>
-    <div class="card-body">
-        <div class="card-subtitle mb-2">Author: @Model.Author</div>
-        <div class="card-text">Publisher: @Model.Publisher</div>
-        <div class="card-text text-muted small">@Model.ISBN</div>
+    <div class="card-body row">
+        <div class="col-7">
+            <div class="card-subtitle mb-2">Author: @Model.Author</div>
+            <div class="card-text">Publisher: @Model.Publisher</div>
+            <div class="card-text text-muted small">@Model.ISBN</div>
+        </div>
+        @*add to cart button*@
+        <div class="col-5">
+            <form id="@Model.BookId" asp-page="/Buy" method="post">
+                <input type="hidden" asp-for="BookId" />
+                <input type="hidden" name="returnUrl" value="@ViewContext.HttpContext.Request.PathAndQuery()" />
+                <button type="submit" class="btn btn-success" style="float:right">
+                    Add to Cart
+                </button>
+            </form>
+        </div>
     </div>
+  
 </div>

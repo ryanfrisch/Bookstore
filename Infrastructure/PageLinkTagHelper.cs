@@ -51,7 +51,7 @@ namespace Bookstore.Infrastructure
                 TagBuilder tag = new TagBuilder("a");
 
                 // store the page url values
-                PageUrlValues["page"] = i;
+                PageUrlValues["pageNum"] = i;
                 tag.Attributes["href"] = urlHelper.Action(PageAction, 
                     PageUrlValues);
 

@@ -27,7 +27,7 @@ namespace Bookstore.Controllers
         }
 
         //Passes the database information and category into the view, make page 1 if no value is passed
-        public IActionResult Index(string category, int page = 1)
+        public IActionResult Index(string category, int pageNum = 1)
         {
             // pass through our pre-packaged data in our new BookListViewModel
             return View(new BookListViewModel
@@ -35,13 +35,13 @@ namespace Bookstore.Controllers
                     Books = _repository.Books
                         .Where(b => category == null || b.Category == category)
                         .OrderBy(b => b.BookId)
-                        .Skip((page - 1) * PageSize)
+                        .Skip((pageNum - 1) * PageSize)
                         .Take(PageSize),
 
                     // create new paging info object that we set up with our class and set all of its properties
                     PagingInfo = new PagingInfo
                     {
-                        CurrentPage = page,
+                        CurrentPage = pageNum,
                         ItemsPerPage = PageSize,
                         // determine TotalNumItems based on the category
                         TotalNumItems = category == null ? _repository.Books.Count() :
